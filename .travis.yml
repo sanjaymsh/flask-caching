@@ -1,4 +1,7 @@
 os: linux
+arch:
+  - amd64
+  - ppc64le
 dist: bionic
 sudo: false
 language: python
@@ -8,6 +11,12 @@ python:
  - "3.7"
  - "3.8"
  - "pypy3"
+
+matrix:
+  exclude:
+     - python: pypy3
+       arch: ppc64le
+
 install:
  - pip install -r requirements.txt
  - pip install coveralls
